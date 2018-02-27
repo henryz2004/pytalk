@@ -16,10 +16,9 @@ Features:
   6. Designed with security in mind
 
 Many improvements can be made, such as:
-  1. Removing the `Message` class
-  2. No-loss message sending and receiving
-  3. Implementing Blocking Remote Events
-  4. Concurrent Server
+  1. No-loss message sending and receiving
+  2. Implementing Blocking Remote Events
+  3. Concurrent Server
 
 Currently it is impossible to see who is in the server, however when a new client joins a message will appear announcing their arrival. This is subject to change.
 
@@ -28,4 +27,4 @@ Of course you can always just... take the files and leave but WHY WOULD YOU?
 
 Please attribute this to Henry Zhang
 
-Version 1.0.git10
+Version 1.1.git6
