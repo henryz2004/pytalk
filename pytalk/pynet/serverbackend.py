@@ -78,26 +78,26 @@ class Server:
 
                         # handle notifications
                         for ntf in messages:
-                            command = self.check_command(r_socket, ntf.message)
+                            command = self.check_command(r_socket, ntf)
 
                             if command:
                                 break   # stop dealing with this client
 
                             # check to see if client is calling remote function/event
                             # signal - next notification will be event_id
-                            if ntf.message == "CALL_RE":
+                            if ntf == "CALL_RE":
                                 print("[ RE ] Received event invocation")
                                 self.client_info[ip]["fun"]["i"] = -1
 
-                            elif ntf.message in self.events and self.client_info[ip]["fun"]["i"] == -1:
-                                print("[ RE ] Identified event_id as", ntf.message)
+                            elif ntf in self.events and self.client_info[ip]["fun"]["i"] == -1:
+                                print("[ RE ] Identified event_id as", ntf)
                                 self.client_info[ip]["fun"]["i"] = 0
-                                self.client_info[ip]["fun"]["id"] = ntf.message
+                                self.client_info[ip]["fun"]["id"] = ntf
 
                             elif -1 < self.client_info[ip]["fun"]["i"] < self.events[self.client_info[ip]["fun"]["id"]][0]:
-                                print("[ RE ] Received", ntf.message, "as argument for", self.client_info[ip]["fun"]["id"])
+                                print("[ RE ] Received", ntf, "as argument for", self.client_info[ip]["fun"]["id"])
                                 self.client_info[ip]["fun"]["i"] += 1
-                                self.client_info[ip]["fun"]["args"].append(ntf.message)
+                                self.client_info[ip]["fun"]["args"].append(ntf)
 
                             # call remote event if possible
                             # pass in the 3 necessary arguments (server, client, ip) + any other args

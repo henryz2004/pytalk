@@ -1,6 +1,6 @@
 # https://www.tutorialspoint.com/python/python_networking.htm
 
-from pynet import message as msg_mod, socket_utility
+from pynet import socket_utility
 import select
 import socket
 import threading
@@ -61,23 +61,23 @@ class Client:
 
                     # handle notifications
                     for ntf in messages:
-                        shutdown = self.check_command(ntf.message)
+                        shutdown = self.check_command(ntf)
 
                         if shutdown:
                             print("Received shutdown command")
                             break
 
                         # remote event handling
-                        if ntf.message == "CALL_RE":
+                        if ntf == "CALL_RE":
                             self.arg_counter = -1
 
-                        elif ntf.message in self.events and self.arg_counter == -1:
+                        elif ntf in self.events and self.arg_counter == -1:
                             self.arg_counter = 0
-                            self.event_id = ntf.message
+                            self.event_id = ntf
 
                         elif -1 < self.arg_counter < self.events[self.event_id][0]:
                             self.arg_counter += 1
-                            self.args.append(ntf.message)
+                            self.args.append(ntf)
 
                         # call remote event if possible
                         # only default argument is self
@@ -105,7 +105,7 @@ class Client:
         print("Mainloop exited")
 
     def send(self, message):
-        self.s.send(message.prepare())
+        self.s.send(socket_utility.prepare(message))
 
     def invoke(self, event_id, *args):
         self.queue("CALL_RE")
@@ -116,7 +116,7 @@ class Client:
     def queue(self, message):
 
         with self.queue_lock:
-            self.pending.append(msg_mod.Message(message))
+            self.pending.append(message)
 
     def check_command(self, message):
         """Checks for special server to client commands (i.e. shutdown). Should be called before other methods"""

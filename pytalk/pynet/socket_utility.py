@@ -1,6 +1,3 @@
-from pynet import message as msg_mod
-
-
 def prepare(message, max_bytes=None):
     """
     Prepares a message for being sent through a socket. Unless otherwise
@@ -44,13 +41,12 @@ def prepare(message, max_bytes=None):
 def partition(message):
     """
     Takes in a decoded message (presumably passed through prepare()) and
-    returns a list of all contained messages. The messages are Message
-    objects.
+    returns a list of all contained messages. The messages are strings
 
     Example:
 
     >>> partition("5   Hello6   World!")
-    [Hello, World!]
+    ['Hello', 'World!']
     """
 
     messages = []
@@ -65,11 +61,10 @@ def partition(message):
         except ValueError:
             print("Erroneous message prefix:", prefix)
 
-            msg_len = len(message)          # assume that all that's left is this message
+            msg_len = len(message)              # assume that all that's left is this message
 
-        msg_obj = msg_mod.Message(message[4:4+msg_len])
-        messages.append(msg_obj)            # add message to appropriate bucket
-        message = message[4+msg_len:]       # slice past current message to next message
+        messages.append(message[4:4+msg_len])   # add message
+        message = message[4+msg_len:]           # slice past current message to next message
 
     return messages
 
