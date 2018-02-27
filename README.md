@@ -26,5 +26,5 @@ Currently it is impossible to see who is in the server, however when a new clien
 This is still an extremely young project. If you wish you can always contribute! ^-^
 Of course you can always just... take the files and leave but WHY WOULD YOU?
 
-Version 1.0.git10
 Please attribute this to Henry Zhang
+Version 1.0.git10
