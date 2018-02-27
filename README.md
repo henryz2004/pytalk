@@ -1,7 +1,7 @@
 # Pytalk
 Chat Program developed entirely in Python and Kivy.
 
-PyTalk is a simple and lightweight Kivy-based chat application that uses sockets. I made it Because I Can, and it is built on top of an event based framework `Pynet` (which is also made by me). Find the framework inside the `pytalk` folder. The It is easily expandable; you can add custom Remote Events or use the networking framework by itself for a completely different task. The only non-standard-library dependency this relies on is Kivy, which can be easily installed using pip.
+PyTalk is a simple and lightweight Kivy-based chat application that uses sockets. I made it Because I Can, and it is built on top of an event based framework `Pynet` (which is also made by me). Find the framework inside the `pytalk` folder. The chat application is easily expandable; you can add custom Remote Events or use the networking framework by itself for a completely different task. The only non-standard-library dependency this relies on is Kivy, which can be easily installed using pip.
 
 To run, first run `chatserver.py` in the background. This will start a server that the client can connect to. Then, in a separate command prompt (or just run concurrently), run `clientgui.py`. After a bunch of omnious error-like startup messages from kivy, a window should come up (if there's a server to connect to). Enter your alias (a user system has not been set up yet) and then press continue. After that you have officially entered the chat room. **Requires Python 3 and above**
 
