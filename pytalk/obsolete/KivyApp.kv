@@ -1,0 +1,18 @@
+# Filename: simpleuitest.py
+#:kivy 1.10.0
+
+<Workspace>:
+	
+	Label:
+		id: lbl
+		text: "Not clicked yet"
+		size_hint: 0.15, 0.1
+		pos_hint: {"x": 0, "top": 1}
+
+	Button:
+		id: clicker
+		text: "Click me!"
+		size_hint: 0.15, 0.1
+		pos_hint: {"x": 0, "y": 0}
+
+		on_press: root.click()

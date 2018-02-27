@@ -1,0 +1,114 @@
+# File name: uitest.py
+#:kivy 1.10.0
+
+<Label>:
+	halign: "left"
+	valign: "center"
+	text_size: self.size
+	color: 0,0,0,1
+
+<Button>:
+	color: 1,1,1,1
+
+<TextMessage>:
+	size_hint_y: None
+	text_size: self.width, None
+	height: self.texture_size[1]
+
+<President>:
+
+	Screen:
+		name: "namescreen"
+
+		FloatLayout:
+
+			Label:
+				size_hint: 0.3, 0.1
+				pos_hint: {"x": 0.2, "top": 0.7}
+				text: "Welcome!"
+				font_size: 30
+
+			Label:
+				size_hint: 0.3, 0.1
+				pos_hint: {"x": 0.2, "top": 0.6}
+				text: "Please enter your name:"
+				font_size: 16
+
+			TextInput:
+				id: name_box
+
+				size_hint: 0.3, 0.05
+				pos_hint: {"x": 0.5, "top":0.575}
+				multiline: False
+
+				on_text: root.name_update(self.text)
+				on_text_validate: if len(self.text) > 0: root.continue_as(self.text)
+
+			Button:
+				id: continue_button
+
+				size_hint: 0.2, 0.075
+				pos_hint: {"x": 0.4, "top": 0.5}
+				text: "Continue"
+				halign: "center"
+				font_size: 18
+				disabled: True
+
+				on_release: root.continue_as(name_box.text)
+
+	Screen:
+		name: "chatscreen"
+
+        ScrollView:
+			id: msg_scroll
+
+			size_hint: 1, 0.9
+			pos_hint: {"x": 0, "top": 1}
+
+			GridLayout:
+				id: msg_grid
+
+				cols: 1
+				size_hint_y: None
+				height: self.minimum_height
+
+
+		FloatLayout:
+
+			TextInput:
+				id: msg_in
+
+				size_hint: 0.95, 0.05
+				pos_hint: {"x": 0, "y": 0}
+				multiline: False
+
+                on_text: root.start_typing(self.text)
+				on_text_validate: root.send_message(self.text)
+
+			Button:
+				id: send_button
+
+				size_hint: 0.05, 0.05
+				pos_hint: {"x": 0.95, "y": 0}
+				text: "Send"
+				halign: "center"
+				font_size: 16
+				background_color: 0.9, 0.9, 1, 1
+
+				on_release: root.send_message(msg_in.text)
+
+            Label:
+                id: curr_typing
+
+                size_hint: 1, 0.05
+                pos_hint: {"x": 0, "y": 0.05}
+                text: ""
+
+            Label:
+                id: ping
+
+                halign: "right"
+                size_hint: 0.08, None
+                height: 30
+                pos_hint: {"right": 1, "top": 1}
+                text: ""
