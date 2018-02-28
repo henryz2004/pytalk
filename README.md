@@ -24,4 +24,4 @@ Of course you can always just... take the files and leave but WHY WOULD YOU?
 
 Please attribute this to Henry Zhang
 
-Version 1.2.git3
+Version 1.2.git28
