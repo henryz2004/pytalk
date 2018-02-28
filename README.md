@@ -12,8 +12,6 @@ The host is assumed to be the local computer, but it is trivial and likely neces
 Features:
   1. Lightweight and flexible
   2. Not many dependencies
-  3. Remote Events which allow for greater developer freedom
-  4. Threaded client
 
 Many improvements can be made, such as:
   1. No-loss message sending and receiving
