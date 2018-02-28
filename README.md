@@ -1,4 +1,4 @@
-# Pytalk
+# PyTalk
 Chat Program developed entirely in Python and Kivy.
 
 PyTalk is a simple and lightweight Kivy-based chat application that uses sockets.
@@ -27,4 +27,4 @@ Of course you can always just... take the files and leave but WHY WOULD YOU?
 
 Please attribute this to Henry Zhang
 
-Version 1.2.git6
+Version 1.2.git3
