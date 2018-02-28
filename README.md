@@ -15,8 +15,7 @@ Features:
 
 Many improvements can be made, such as:
   1. No-loss message sending and receiving
-  2. Implementing Blocking Remote Events
-  3. Concurrent Server
+  2. Concurrent Server
 
 Currently it is impossible to see who is in the server, however when a new client joins a message will appear announcing their arrival. This is subject to change.
 
